@@ -20,5 +20,16 @@ namespace LeetCode.Tests
 
             Assert.AreNotEqual(null, result);
         }
+
+        [TestMethod()]
+        public void TwoSum2Test()
+        {
+            int[] nums = new int[] { 2, 7, 11, 15 };
+            int target = 9;
+            T1_TwoSum t1_TwoSum = new T1_TwoSum();
+
+            var result = t1_TwoSum.TwoSum2(nums, target);
+            Assert.AreNotEqual(null, result);
+        }
     }
 }
