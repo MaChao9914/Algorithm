@@ -7,6 +7,10 @@ namespace LeetCode
 {
     public class T31_NextPermutation
     {
+        /// <summary>
+        /// 一遍扫描
+        /// </summary>
+        /// <param name="nums"></param>
         public void NextPermutation(int[] nums)
         {
             int i = nums.Length - 2;
