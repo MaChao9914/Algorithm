@@ -27,7 +27,7 @@ namespace LeetCode.Tests
             Assert.AreEqual(true, isEqual);
         }
 
-        private int[] ListNodeToArray(ListNode listNode)
+        public static int[] ListNodeToArray(ListNode listNode)
         {
             List<int> ans = new List<int>();
             ListNode current = listNode;
@@ -40,7 +40,7 @@ namespace LeetCode.Tests
             return ans.ToArray();
         }
 
-        private ListNode GetListNode(int[] array)
+        public static ListNode GetListNode(int[] array)
         {
             ListNode ans = new ListNode(0);
             ListNode current = ans;
