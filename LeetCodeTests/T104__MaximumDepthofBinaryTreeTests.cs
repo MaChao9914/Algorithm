@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlTypes;
+using System.Linq;
 
 namespace LeetCode.Tests
 {
@@ -19,6 +20,29 @@ namespace LeetCode.Tests
 			T104__MaximumDepthofBinaryTree t104__MaximumDepthof = new T104__MaximumDepthofBinaryTree();
 			var depth = t104__MaximumDepthof.MaxDepth2(root);
 			Assert.AreEqual(3, depth);
+        }
+
+		public static int?[] TreeNode2Arr(TreeNode root)
+        {
+			List<int?> vals = new List<int?>();
+
+			Queue<TreeNode> trees = new Queue<TreeNode>();
+			trees.Enqueue(root);
+			while (trees.Count > 0)
+            {
+				
+				TreeNode node = trees.Dequeue();
+                if (node == null)
+                {
+					vals.Add(null);
+					continue;
+                }
+				vals.Add(node.val);
+				trees.Enqueue(node.left);
+				trees.Enqueue(node.right);
+            }
+			var count = vals.FindLastIndex(v => v != null) + 1;
+			return vals.Take(count).ToArray();
         }
 
         public static TreeNode GetTree(int?[] arr)
