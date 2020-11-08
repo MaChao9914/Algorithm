@@ -48,7 +48,7 @@ namespace LeetCode
 
             Queue<TreeNode> trees = new Queue<TreeNode>();
             trees.Enqueue(root);
-            int count = trees.Count;//表是某一层的所有节点
+            int count = trees.Count;//表示某一层的所有节点数
             while (count != 0)
             {
                 while (count > 0)
