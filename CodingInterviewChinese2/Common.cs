@@ -12,10 +12,23 @@ namespace CodingInterviewChinese2
         public int val;
         public ListNode next;
 
-        public ListNode()
-        {
-        }
-
         public ListNode(int x) { val = x; }
     }
+
+
+    // Definition for a Node.
+    public class Node
+    {
+        public int? val;
+        public Node next;
+        public Node random;
+
+        public Node(int? _val)
+        {
+            val = _val;
+            next = null;
+            random = null;
+        }
+    }
+
 }
