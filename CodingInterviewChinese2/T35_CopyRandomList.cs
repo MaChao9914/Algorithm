@@ -10,6 +10,9 @@ namespace CodingInterviewChinese2
     {
         public static Node CopyRandomList(Node head)
         {
+            if (head == null)
+                return null;
+
             Node clone = head;
             //复制链表，只考虑next
             while (clone != null)
@@ -34,23 +37,21 @@ namespace CodingInterviewChinese2
 
             //拆链表
             clone = head;
-            Node ans = null;
-            Node ansHead = null;
-            if (clone != null)
-            {
-                ans = clone.next;
-                ansHead = ans;
+            Node ansHead = clone.next;
+            //if (clone != null)
+            //{
+            //    ans = clone.next;
+            //    ansHead = ans;
 
-                clone.next = clone.next.next;//复原输入链表
-                clone = clone.next;
-            }
+            //    clone.next = clone.next.next;//复原输入链表
+            //    clone = clone.next;
+            //}
             while (clone != null)
             {
-                ans.next = clone.next;
-                ans = ans.next;
-
+                Node ans = clone.next;
                 clone.next = clone.next.next;//复原输入链表
                 clone = clone.next;
+                ans.next = clone != null ? clone.next : null;
             }
 
             return ansHead;
