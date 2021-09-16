@@ -38,14 +38,14 @@ namespace CodingInterviewChinese2
             }
         }
 
-        public static int FindRepeatNumber2(int[] nums)
-        {
-            int length = nums.Length;
-            for (int i = 0; i < length; i++)
-            {
-                if (nums[i] < 0 || nums[i] > length - 1)
-                    return -1;
-            }
-        }
+        //public static int FindRepeatNumber2(int[] nums)
+        //{
+        //    int length = nums.Length;
+        //    for (int i = 0; i < length; i++)
+        //    {
+        //        if (nums[i] < 0 || nums[i] > length - 1)
+        //            return -1;
+        //    }
+        //}
     }
 }
