@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingInterviewChinese2
 {
-    //* Definition for singly-linked list.
+    // Definition for singly-linked list.
     public class ListNode
     {
         public int val;
@@ -14,7 +14,6 @@ namespace CodingInterviewChinese2
 
         public ListNode(int x) { val = x; }
     }
-
 
     // Definition for a Node.
     public class Node
@@ -29,6 +28,15 @@ namespace CodingInterviewChinese2
             next = null;
             random = null;
         }
+    }
+
+    //Definition for a binary tree node.
+    public class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int x) { val = x; }
     }
 
 }
