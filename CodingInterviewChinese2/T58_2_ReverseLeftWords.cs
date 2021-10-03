@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingInterviewChinese2
 {
-    public class T58_ReverseLeftWords
+    public class T58_2_ReverseLeftWords
     {
         public static string ReverseLeftWords(string s, int n)
         {

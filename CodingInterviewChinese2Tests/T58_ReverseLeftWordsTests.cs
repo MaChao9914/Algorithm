@@ -16,7 +16,7 @@ namespace CodingInterviewChinese2.Tests
         [DataRow("lrloseumgh", 6, "umghlrlose")]
         public void ReverseLeftWordsTest(string s, int n, string expected)
         {
-            var r = T58_ReverseLeftWords.ReverseLeftWords3(s, n);
+            var r = T58_2_ReverseLeftWords.ReverseLeftWords3(s, n);
             Assert.AreEqual(expected, r);
         }
     }
