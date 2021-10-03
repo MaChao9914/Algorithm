@@ -37,65 +37,106 @@ namespace Utilities
             int length = arr.Length;
             for (int i = 1; i < length; i++)
             {
-                int minIndex = i;
-                T minValue = arr[i];
-                while (minIndex > 0 && arr[minIndex - 1].CompareTo(minValue) > 0)
+                int crrIndex = i;
+                T crrValue = arr[i];
+                while (crrIndex > 0 && arr[crrIndex - 1].CompareTo(crrValue) > 0)
                 {
-                    arr[minIndex] = arr[minIndex - 1];
-                    minIndex--;
+                    arr[crrIndex] = arr[crrIndex - 1];
+                    crrIndex--;
                 }
-                arr[minIndex] = minValue;
+                arr[crrIndex] = crrValue;
             }
 
             return arr;
         }
 
-        public static T[] MergeSort<T>(T[] arr, int startIndex, int endIndex) where T : IComparable
+        public static T[] MergeSort2<T>(T[]arr, int start, int end) where T : IComparable
         {
             int length = arr.Length;
+            start = start >= 0 ? start : 0;
+            end = end <= length - 1 ? end : length - 1;
 
-            startIndex = startIndex < 0 ? 0 : startIndex;
-            endIndex = endIndex > length - 1 ? length - 1 : endIndex;
-
-            if (startIndex >= endIndex)
+            if (start >= end)
                 return null;
 
-            int mid = (startIndex + endIndex) >> 1;
+            int mid = (start + end) >> 1;
+            MergeSort2<T>(arr, start, mid);
+            MergeSort2<T>(arr, mid + 1, end);
+
             T[] temp = new T[length];
-
-            MergeSort<T>(arr, startIndex, mid);
-            MergeSort<T>(arr, mid + 1, endIndex);
-
-            for (int i = startIndex, j = startIndex, k = mid + 1; i <= endIndex; i++)
+            for (int i = start, j = start, k = mid + 1; i <= end; i++)
             {
-                if (j <= mid && k <= endIndex)
+                if(j<=mid && k <= end)
                 {
-                    if (arr[j].CompareTo(arr[k])<0)
-                    {
+                    if (arr[j].CompareTo(arr[k]) < 0)
                         temp[i] = arr[j++];
-                    }
                     else
-                    {
                         temp[i] = arr[k++];
-                    }
                 }
-                else if (j > mid)
+                else if(j > mid)
                 {
                     temp[i] = arr[k++];
                 }
-                else
+                else if(k > end)
                 {
                     temp[i] = arr[j++];
                 }
             }
 
-            for (int i = startIndex; i <= endIndex; i++)
+            for (int i = start; i <= end; i++)
             {
                 arr[i] = temp[i];
             }
 
             return arr;
         }
+
+        //public static T[] MergeSort<T>(T[] arr, int startIndex, int endIndex) where T : IComparable
+        //{
+        //    int length = arr.Length;
+
+        //    startIndex = startIndex < 0 ? 0 : startIndex;
+        //    endIndex = endIndex > length - 1 ? length - 1 : endIndex;
+
+        //    if (startIndex >= endIndex)
+        //        return null;
+
+        //    int mid = (startIndex + endIndex) >> 1;
+        //    T[] temp = new T[length];
+
+        //    MergeSort<T>(arr, startIndex, mid);
+        //    MergeSort<T>(arr, mid + 1, endIndex);
+
+        //    for (int i = startIndex, j = startIndex, k = mid + 1; i <= endIndex; i++)
+        //    {
+        //        if (j <= mid && k <= endIndex)
+        //        {
+        //            if (arr[j].CompareTo(arr[k])<0)
+        //            {
+        //                temp[i] = arr[j++];
+        //            }
+        //            else
+        //            {
+        //                temp[i] = arr[k++];
+        //            }
+        //        }
+        //        else if (j > mid)
+        //        {
+        //            temp[i] = arr[k++];
+        //        }
+        //        else
+        //        {
+        //            temp[i] = arr[j++];
+        //        }
+        //    }
+
+        //    for (int i = startIndex; i <= endIndex; i++)
+        //    {
+        //        arr[i] = temp[i];
+        //    }
+
+        //    return arr;
+        //}
 
         public static T[] QuickSort<T>(T[] arr, int startIndex, int endIndex) where T : IComparable
         {
@@ -129,6 +170,39 @@ namespace Utilities
             }
             arr[startIndex] = key;
             return startIndex;
+        }
+
+        public static T[] QuickSort2<T>(T[] arr, int start, int end) where T : IComparable
+        {
+            int length = arr.Length;
+            start = start < 0 ? 0 : start;
+            end = end > length - 1 ? length - 1 : end;
+
+            if (start > end)
+                return null;
+
+            int partition = FindPartition2<T>(arr, start, end);
+            QuickSort2<T>(arr, start, partition - 1);
+            QuickSort2<T>(arr, partition + 1, end);
+            return arr;
+        }
+
+        static int FindPartition2<T>(T[] arr, int start, int end) where T : IComparable
+        {
+            T key = arr[start];
+
+            while(start < end)
+            {
+                while (start < end && arr[end].CompareTo(key) >= 0)
+                    end--;
+                arr[start] = arr[end];
+
+                while (start < end && arr[start].CompareTo(key) <= 0)
+                    start++;
+                arr[end] = arr[start];
+            }
+            arr[start] = key;
+            return start;
         }
 
         public static T[] SelectSort<T>(T[] arr) where T :IComparable

@@ -129,4 +129,50 @@ namespace CodingInterviewChinese2
             internal static readonly T2_Singleton5 instance = new T2_Singleton5();
         }
     }
+
+    //public sealed class Singleton { 
+    //    private Singleton()
+    //    {
+    //    }
+
+    //    //private static Singleton _instance = null;
+    //    //private static readonly object o = new object();
+
+    //    //public static Singleton Instance { 
+    //    //    get 
+    //    //    { 
+    //    //        if(_instance == null)
+    //    //        {
+    //    //            lock (o)
+    //    //            {
+    //    //                if (_instance == null)
+    //    //                    _instance = new Singleton();
+    //    //            }
+    //    //        }
+    //    //        return _instance;
+    //    //    } 
+    //    //}
+
+    //    //private static Singleton _instance = new Singleton();
+    //    //public static Singleton Instance
+    //    //{
+    //    //    get
+    //    //    {
+    //    //        return _instance;
+    //    //    }
+    //    //}
+
+    //    public static Singleton Instance
+    //    {
+    //        get
+    //        {
+    //            return Nested.Instance;
+    //        }
+    //    }
+
+    //    class Nested
+    //    {
+    //        internal static readonly Singleton Instance = new Singleton();
+    //    }
+    //}
 }
