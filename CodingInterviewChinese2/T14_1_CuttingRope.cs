@@ -21,7 +21,7 @@ namespace CodingInterviewChinese2
 
             for (int i = 1; i <= n; i++)
             {
-                if(i < 4)
+                if(i < 4)//小于4的部分绳子没必要剪断了
                 {
                     k[i] = i;
                     continue;
