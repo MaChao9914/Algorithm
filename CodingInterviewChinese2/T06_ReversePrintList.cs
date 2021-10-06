@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingInterviewChinese2
 {
-    public class T6_ReversePrintList
+    public class T06_ReversePrintList
     {
         public int[] ReversePrint(ListNode head)
         {

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CodingInterviewChinese2
 {
-    public class T9_CQueue
+    public class T09_CQueue
     {
         private Stack<int> _stack1;
         private Stack<int> _stack2;
 
-        public T9_CQueue()
+        public T09_CQueue()
         {
             _stack1 = new Stack<int>();
             _stack2 = new Stack<int>();
