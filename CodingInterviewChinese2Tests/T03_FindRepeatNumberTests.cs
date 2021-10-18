@@ -15,10 +15,21 @@ namespace CodingInterviewChinese2.Tests
         [DataRow(new int[] { 2, 3, 1, 0, 2, 5, 3 }, new int[] {2, 3})]
         public void FindRepeatNumber1Test(int[] input, int[] expected)
         {
-            var a = input.ToList();
-            var b = input.ToList();
-            a.Sort();
-            b.Sort((x, y) => y - x);
+            //var a = input.ToList();
+            //var b = input.ToList();
+            //a.Sort();
+            //b.Sort((x, y) => y - x);
+
+            int[][] temp =
+            {
+                new int[]{ 1, 2, 3, 4 },
+                new int[]{ 5,6,7,8},
+                new int[]{ 9, 10, 11, 12 }
+            };
+
+            int m = temp.Length;
+            int n = temp[0].Length;
+
             //int[][] array1 =
             //        {
             //            new int[] { 1, 3, 5, 7, 9 },
