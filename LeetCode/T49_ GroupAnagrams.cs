@@ -69,5 +69,33 @@ namespace LeetCode
             ans.AddRange(pairs.Values);
             return ans;
         }
+
+        public IList<IList<string>> GroupAnagrams3(string[] strs)
+        {
+            List<IList<string>> ans = new List<IList<string>>();
+            if (strs == null || strs.Length == 0)
+                return ans;
+            Dictionary<string, IList<string>> keyValues = new Dictionary<string, IList<string>>();
+            foreach (var str in strs)
+            {
+                char[] chs = new char[26];
+
+                foreach (var ch in str)
+                {
+                    chs[ch - 'a']++;
+                }
+                var key = new string(chs);
+                if (keyValues.ContainsKey(key))
+                    keyValues[key].Add(str);
+                else
+                {
+                    List<string> value = new List<string>();
+                    value.Add(str);
+                    keyValues.Add(key, value);
+                }
+            }
+            ans = keyValues.Values.ToList();
+            return ans;
+        }
     }
 }

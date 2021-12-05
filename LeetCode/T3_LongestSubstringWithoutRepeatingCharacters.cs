@@ -64,5 +64,27 @@ namespace LeetCode
 
             return maxSubLength;
         }
+
+        public int LengthOfLongestSubstring3(string s)
+        {
+            Dictionary<char, int> window = new Dictionary<char, int>();
+            int longest = 0;
+            for (int i = 0,j = 0; j < s.Length; j++)
+            {
+                char ch = s[j];
+                if (window.ContainsKey(ch))
+                {
+                    i = window[ch] > i ? window[ch] : i;
+                    window[ch] = j;
+                }
+                else
+                {
+                    window.Add(ch, j);
+                }
+                var temp = j - i;
+                longest = temp > longest ? temp : longest;
+            }
+            return longest;
+        }
     }
 }
