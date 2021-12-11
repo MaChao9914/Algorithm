@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode
 {
-    public class T116_Connect
+    public class T117_Connect
     {
         public Node Connect(Node root)
         {
@@ -31,6 +31,7 @@ namespace LeetCode
             }
             return root;
         }
+
         //时间复杂度：O(N)，每个节点只访问一次。
         //空间复杂度：O(1)，不需要存储额外的节点。
         public Node Connect2(Node root)
@@ -38,45 +39,38 @@ namespace LeetCode
             if (root == null)
                 return null;
             Node node = root;
-            while(node.left != null)//遍历每一层
+            while (node != null)//纵向遍历每一层
             {
-                Node temp = node;
-                while(temp != null)//遍历当前层的每一个节点
+                Node currNode = node;
+                Node subStartNode = null;
+                Node subNode = subStartNode;
+                while (currNode != null)//横向遍历当前层的每一个节点
                 {
-                    temp.left.next = temp.right;
-                    if (temp.next != null)
+                    if (subStartNode == null)
                     {
-                        temp.right.next = temp.next.left;
+                        subStartNode = currNode.left ?? currNode.right;//初始化下一层的起始节点
+                        subNode = subStartNode;
                     }
-                    temp = temp.next;
+
+                    if(subNode != null)
+                    {
+                        if (subNode == currNode.left && currNode.right != null)
+                        {
+                            subNode.next = currNode.right;
+                            subNode = subNode.next;
+                        }
+                        if (currNode.next != null)
+                        {
+                            subNode.next = currNode.next.left ?? currNode.next.right;
+                            if (subNode.next != null)
+                                subNode = subNode.next;
+                        }
+                    }
+                    currNode = currNode.next;
                 }
-                node = node.left;
+                node = subStartNode;//下一层的第一个节点
             }
             return root;
-        }
-    }
-
-    // Definition for a Node.
-    public class Node
-    {
-        public int val;
-        public Node left;
-        public Node right;
-        public Node next;
-
-        public Node() { }
-
-        public Node(int _val)
-        {
-            val = _val;
-        }
-
-        public Node(int _val, Node _left, Node _right, Node _next)
-        {
-            val = _val;
-            left = _left;
-            right = _right;
-            next = _next;
         }
     }
 }
