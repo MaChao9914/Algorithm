@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace LeetCode
 {
+    /// <summary>
+    /// LeetCode 729
+    /// </summary>
     public class MyCalendar
     {
         SortedDictionary<int?, int> pairs;
@@ -27,6 +30,9 @@ namespace LeetCode
         }
     }
 
+    /// <summary>
+    /// LeetCode 731
+    /// </summary>
     public class MyCalendarTwo
     {
         SortedDictionary<int, int> pairs;
@@ -61,6 +67,8 @@ namespace LeetCode
                 {
                     pairs[start]--;
                     pairs[end]++;
+                    if (pairs[start] == 0)
+                        pairs.Remove(start);
                     return false;
                 }
             }
@@ -68,6 +76,9 @@ namespace LeetCode
         }
     }
 
+    /// <summary>
+    /// LeetCode 732
+    /// </summary>
     public class MyCalendarThree
     {
         SortedDictionary<int, int> pairs;
