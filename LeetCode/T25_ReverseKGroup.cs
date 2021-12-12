@@ -18,15 +18,15 @@ namespace LeetCode
             while (node.next != null)
             {
                 ListNode tempHead = node.next;
-                ListNode tail = tempHead;
+                ListNode tempTail = tempHead;
                 for (int i = 1; i < k; i++)
                 {
-                    tail = tail.next;
-                    if (tail == null)
+                    tempTail = tempTail.next;
+                    if (tempTail == null)
                         return ans.next;
                 }
-                var next = tail.next;
-                node.next = ReverseNode(tempHead, tail);
+                var next = tempTail.next;
+                node.next = ReverseNode(tempHead, tempTail);
                 tempHead.next = next;//经过旋转，昔日头已经变成尾了
                 node = tempHead;
             }
