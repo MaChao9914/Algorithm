@@ -21,9 +21,6 @@ namespace CodingInterviewChinese2.Tests
         [TestMethod()]
         public void ConvertNumber()
         {
-            
-
-
             //十进制转二进制
             var ans1 = Convert.ToString(4, 2);
 

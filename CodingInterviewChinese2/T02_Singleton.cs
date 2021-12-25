@@ -130,49 +130,44 @@ namespace CodingInterviewChinese2
         }
     }
 
-    //public sealed class Singleton { 
-    //    private Singleton()
-    //    {
-    //    }
+    public sealed class Singleton
+    {
+        public Singleton() { }
 
-    //    //private static Singleton _instance = null;
-    //    //private static readonly object o = new object();
+        private static Singleton _singleton = null;
+        private static object obj = new object();
+        public static Singleton GetSingleton 
+        {
+            get
+            {
+                if(_singleton == null)
+                {
+                    lock (obj)
+                    {
+                        if (_singleton == null)
+                            _singleton = new Singleton();
+                    }
+                }
+                return _singleton;
+            } 
+        }
+    }
 
-    //    //public static Singleton Instance { 
-    //    //    get 
-    //    //    { 
-    //    //        if(_instance == null)
-    //    //        {
-    //    //            lock (o)
-    //    //            {
-    //    //                if (_instance == null)
-    //    //                    _instance = new Singleton();
-    //    //            }
-    //    //        }
-    //    //        return _instance;
-    //    //    } 
-    //    //}
+    public sealed class Singleton2
+    {
+        public Singleton2() { }
 
-    //    //private static Singleton _instance = new Singleton();
-    //    //public static Singleton Instance
-    //    //{
-    //    //    get
-    //    //    {
-    //    //        return _instance;
-    //    //    }
-    //    //}
+        public Singleton2 GetSingleton2 
+        {
+            get
+            {
+                return Nested.singleton2;
+            }
+        }
 
-    //    public static Singleton Instance
-    //    {
-    //        get
-    //        {
-    //            return Nested.Instance;
-    //        }
-    //    }
-
-    //    class Nested
-    //    {
-    //        internal static readonly Singleton Instance = new Singleton();
-    //    }
-    //}
+        class Nested
+        {
+            internal readonly static Singleton2 singleton2 = new Singleton2();
+        }
+    }
 }

@@ -25,5 +25,22 @@ namespace CodingInterviewChinese2
             }
             return temp2;
         }
+
+        public int NumWays2(int n)
+        {
+            if (n == 0)
+                return 1;
+            if (n <= 2)
+                return n;
+            const int MOD = 1000000007;
+            int temp1 = 0, temp2 = 1, result = 2;
+            for (int i = 3; i <= n; i++)
+            {
+                temp1 = temp2;
+                temp2 = result;
+                result = (temp1 + temp2) % MOD;
+            }
+            return result;
+        }
     }
 }
