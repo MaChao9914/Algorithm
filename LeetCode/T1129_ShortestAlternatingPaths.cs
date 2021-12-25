@@ -72,7 +72,7 @@ namespace LeetCode
                         if (dist[node][0] == -1)
                         {
                             dist[node][0] = stepNum;
-                            blueStartQueue.Enqueue(node);
+                            blueStartQueue.Enqueue(node);//因为红蓝交替
                         }
                     }
                 }
@@ -86,7 +86,7 @@ namespace LeetCode
                         if (dist[node][1] == -1)
                         {
                             dist[node][1] = stepNum;
-                            redStartQueue.Enqueue(node);
+                            redStartQueue.Enqueue(node);//因为红蓝交替
                         }
                     }
                 }

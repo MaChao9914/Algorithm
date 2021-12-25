@@ -8,6 +8,12 @@ namespace LeetCode
 {
     public class T16_ThreeSumClosest
     {
+        /// <summary>
+        /// 排序+双指针
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public static int ThreeSumClosest(int[] nums, int target)
         {
             Array.Sort(nums);

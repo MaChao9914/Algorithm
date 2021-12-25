@@ -29,7 +29,7 @@ namespace LeetCode
                 for (int i = 0; i < length; i++)
                 {
                     string curr = queue.Dequeue();
-                    var nexts = GetNexts(curr);
+                    var nexts = GetNexts(curr);//获得所有可能的组合
                     foreach (var next in nexts)
                     {
                         if(!deadHash.Contains(next) && !hasVisited.Contains(next))

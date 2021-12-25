@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode
 {
+    /// <summary>
+    /// 双端循环队列
+    /// 622题循环队列
+    /// </summary>
     public class MyCircularDeque
     {
         private int[] _queue;

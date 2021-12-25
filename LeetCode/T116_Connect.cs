@@ -23,6 +23,7 @@ namespace LeetCode
                     Node node = queue.Dequeue();
                     if (i < size - 1)
                         node.next = queue.Peek();
+                    //将下一层加入队列
                     if (node.left != null)
                         queue.Enqueue(node.left);
                     if (node.right != null)

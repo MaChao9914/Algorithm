@@ -8,6 +8,12 @@ namespace LeetCode
 {
     public class T30_FindSubstring
     {
+        /// <summary>
+        /// 滑动窗口
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="words"></param>
+        /// <returns></returns>
         public static IList<int> FindSubstring(string s, string[] words)
         {
             List<int> ans = new List<int>();
@@ -37,7 +43,7 @@ namespace LeetCode
                         }
                         else
                         {
-                            if (start != -1)
+                            if (start != -1 && temps.Count != wordsLength)
                                 temps = words.ToList();
                             break;
                         }

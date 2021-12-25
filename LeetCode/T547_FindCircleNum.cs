@@ -12,16 +12,16 @@ namespace LeetCode
         {
             int cities = isConnected.Length;
             bool[] visited = new bool[cities];
-            int cirleNum = 0;
+            int circleNum = 0;
             for (int i = 0; i < cities; i++)
             {
                 if (!visited[i])
                 {
                     FindCircleNum(isConnected, visited, cities, i);
-                    cirleNum++;
+                    circleNum++;
                 }
             }
-            return cirleNum;
+            return circleNum;
         }
 
         private void FindCircleNum(int[][] isConnected, bool[] visited, int cities, int currIndex)
