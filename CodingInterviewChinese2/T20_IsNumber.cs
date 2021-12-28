@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CodingInterviewChinese2
 {
-    class T20_IsNumber
+    public class T20_IsNumber
     {
         /// <summary>
         /// [+/-][A][.][B][e/E][+/-][A]
+        /// 库函数
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -21,7 +22,73 @@ namespace CodingInterviewChinese2
         }
 
         /// <summary>
+        /// 程序员面试经典书本上的解法
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool IsNumber3(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return false;
+
+            s = s.Trim();
+            int index = 0, length = s.Length;
+
+            bool isNum = ScanInteger(s, ref index);
+
+            //出现 . 小数部分
+            if(index < length && s[index] == '.')
+            {
+                index += 1;
+
+                //用或的原因是：1、小数点前面可以没有小数部分 .123
+                //2、小数点后面也可以没有数字 123.
+                //3、都有数字 123.456
+                isNum = ScanUnsignedInteger(s, ref index) || isNum;
+            }
+
+            if(index < length && (s[index] == 'e' || s[index] == 'E'))
+            {
+                index += 1;
+                //用且的原因是前后必需有整数，而且后面可以带符号的整数
+                isNum = isNum && ScanInteger(s, ref index);
+            }
+
+            //字符串以到结尾，中间出现了任何非数字都无法达到结尾
+            return isNum && index == length;
+        }
+
+        /// <summary>
+        /// 扫描整数
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="currIndex"></param>
+        /// <returns></returns>
+        private bool ScanInteger(string s, ref int currIndex)
+        {
+            if (currIndex < s.Length && (s[currIndex] == '+' || s[currIndex] == '-'))
+                currIndex += 1;
+            return ScanUnsignedInteger(s, ref currIndex);
+        }
+
+        /// <summary>
+        /// 扫描无符号整数
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="currIndex"></param>
+        /// <returns></returns>
+        private bool ScanUnsignedInteger(string s, ref int currIndex)
+        {
+            int begin = currIndex;
+            while (currIndex < s.Length && s[currIndex] >= '0' && s[currIndex] <= '9')
+                currIndex += 1;
+
+            return currIndex > begin;
+        }
+
+        /// <summary>
         /// [+/-][A][.][B][e/E][+/-][A]
+        /// LeetCode 官方题解状态机
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
