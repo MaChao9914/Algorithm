@@ -8,6 +8,12 @@ namespace CodingInterviewChinese2
 {
     public class T25_MergeTwoLists
     {
+        /// <summary>
+        /// 迭代
+        /// </summary>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
+        /// <returns></returns>
         public ListNode MergeTwoLists1(ListNode l1, ListNode l2)
         {
             if (l1 == null && l2 == null)
@@ -31,15 +37,20 @@ namespace CodingInterviewChinese2
             temp.next = l1 != null ? l1 : l2;
             return ans.next;
         }
+
+        /// <summary>
+        /// 递归
+        /// </summary>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
+        /// <returns></returns>
         public ListNode MergeTwoLists2(ListNode l1, ListNode l2)
         {
-            if (l1 == null && l2 == null)
-                return null;
-
             if (l1 == null)
                 return l2;
             if (l2 == null)
                 return l1;
+
             ListNode ans = null;
             if(l1.val <= l2.val)
             {

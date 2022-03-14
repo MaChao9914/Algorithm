@@ -10,7 +10,7 @@ namespace CodingInterviewChinese2
     {
         public bool IsSubStructure(TreeNode A, TreeNode B)
         {
-            if (A == null || B == null)
+            if (A == null || B == null)//题目约定空树不是任意一个树的子结构
                 return false;
 
             bool result = false;

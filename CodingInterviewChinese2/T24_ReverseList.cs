@@ -8,6 +8,11 @@ namespace CodingInterviewChinese2
 {
     public class T24_ReverseList
     {
+        /// <summary>
+        /// LeetCode25题是本题的升级版
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public ListNode ReverseList(ListNode head)
         {
             ListNode node = head;
